@@ -99,7 +99,7 @@ function kopeginYasi(x) {
 }
 
 console.log(kopeginYasi(5,7))
-
+console.log("test")
 
 
 /* Görev 3 */
