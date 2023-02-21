@@ -117,8 +117,31 @@ OYUNUN KURALLARI: Makas Kağıdı yener| Kağıt Taşı yener | Taş Makas'ı ye
 */
 
 function oyun(oyuncu, bilgisayar){
-  /*buraya kodunu yazabilirsin*/
+  switch(oyuncu)
+  {
+      case "Taş":
+        return bilgisayar === "Makas" 
+        ? "Kazandın!" 
+        : ( bilgisayar === "Kağıt" 
+        ? "Kaybettin!" : "Beraberlik");
+      case "Kağıt":
+        return bilgisayar === "Makas" 
+        ? "Kaybettin!" 
+        : ( bilgisayar === "Kağıt" 
+        ? "Beraberlik" 
+        : "Kazandın!");
+      case "Makas":
+        return bilgisayar === "Makas" 
+        ? "Beraberlik" 
+        : ( bilgisayar === "Kağıt" 
+        ? "Kazandın!" 
+        : "Kaybettin!");
+  }
 }
+console.log("Oyuncu taş, bilgisayar kağıt seçiyor... ve... " + oyun("Taş","Kağıt"));
+
+
+
 
 // Şimdi Taş, Kağıt, Makas oyununu bilgisayara karşı oynayalım!
 /*
@@ -136,6 +159,20 @@ function oyun(oyuncu, bilgisayar){
 Örn: console.log(oyun("Makas",bilgisayarinSecimi()))
 */
 
+function bilgisayarinSecimi() {
+  let ayseninsayisi = Math.random() * 3;
+  if (ayseninsayisi < 1) {
+    return "Taş";
+  } else if (ayseninsayisi < 2) {
+    return "Makas";
+  } else {
+    return "Kağıt";
+  }
+}
+
+console.log(oyun("Makas", bilgisayarinSecimi()));
+
+
 /* Görev 4 : Metrik Dönüştürücü */
 
 //Görev 4a - Kilometreden Mil
@@ -146,9 +183,11 @@ Aşağdaki milDonusturucu fonksiyonunu aşağıdakileri kullanarak tamamlayın:
 3. Mil değerini geri dönün
 */
 
-function milDonusturucu(/*buraya kodunu yazabilirsin*/){
-  /*buraya kodunu yazabilirsin*/
+function milDonusturucu(km) {
+  return km * 0.621371;
+
 }
+
 
 
 
@@ -162,10 +201,9 @@ Aşağıdakileri feetDonusturucu fonsiyonunu kullanarak yapın:
 Google'da arama ipucu: "feet cm dönüştürme"
 */
 
-function feetDonusturucu(/*buraya kodunu yazabilirsin*/){
-  /*buraya kodunu yazabilirsin*/
+function feetDonusturucu(cm) {
+  return cm * 30.48;
 }
-
 
 
 /* Görev 5 : 5 küçük maymun yatakta zıplamış şarkısını çocuklar için hazırladığımızı varsayalım. https://www.youtube.com/watch?v=e4EJ34xnlxk */
@@ -181,9 +219,13 @@ Aşağıdakileri cocukSarkisi fonksiyonunda yapın:
 4. Bu döngüde, her seferinde cocukSarkisi fonsiyonu çalışsın ve console.log'a dönen metni yazdırsın.
 */
 
-function cocukSarkisi(/*buraya kodunu yazabilirsin*/){
-      /*buraya kodunu yazabilirsin*/
+function cocukSarkisi(oAnkiMaymunAdedi) {
+  return oAnkiMaymunAdedi + " küçük maymun yatakta zıplamış, biri düşüp başını çarpmış, Anne doktoru aramış, Doktor çok kızmış: Bir daha yatakta zıplamak yok!";
 }
+let maymunAdedi = 5;
+for( let i = maymunAdedi; i > 0 ; i--)
+console.log(cocukSarkisi(i));
+
 
 
 /* Görev 6 : Not Hesaplayıcı */
@@ -201,9 +243,22 @@ Aşağdakileri notHesapla fonksiyonunda yapın.
  dönün
 */
 
-function notHesapla(/*buraya kodunu yazabilirsin*/){
-/*buraya kodunu yazabilirsin*/
+function notHesapla(sinavSonucu) {
+  let geciciSonuc = "";
+  if (sinavSonucu <= 100 && sinavSonucu >=90) {
+    geciciSonuc = 'A aldın';
+  } else if (sinavSonucu <=89 && sinavSonucu >=80) {
+    geciciSonuc = 'B aldın';
+  } else if (sinavSonucu <=79 && sinavSonucu >=70) {
+    geciciSonuc = 'C aldın';
+  } else if (sinavSonucu <=69 && sinavSonucu >=60) {
+    geciciSonuc = 'D aldın';
+  } else if (sinavSonucu <=59) {
+    geciciSonuc = 'F aldın'; 
+  }
+  return geciciSonuc;
 }
+
 
 
 
@@ -219,11 +274,16 @@ Aşağıdakileri sesliHarfSayaci fonskiyonunda yapın.
 */
 
 
-function sesliHarfSayaci(/*buraya kodunu yazabilirsin*/) {
-  /*buraya kodunu yazabilirsin*/
+function sesliHarfSayaci(metinIcerigi) {
+  var string = 'aeoöuüiAEOÖUÜIı';
+  var sesliHarfSayaci = 0;
+  
+  for (var i = 0; i <= metinIcerigi.length; i++)
+      if(string.indexOf(metinIcerigi[i]) > -1)
+           sesliHarfSayaci++;
+  
+  return sesliHarfSayaci;
 }
-
-
 
 /* Lütfen bu satırın alt tarafını değiştirmeyin */
 function sa(){
