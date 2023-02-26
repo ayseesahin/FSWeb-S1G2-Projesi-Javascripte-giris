@@ -202,7 +202,7 @@ Google'da arama ipucu: "feet cm dönüştürme"
 */
 
 function feetDonusturucu(cm) {
-  return cm * 30.48;
+  return cm / 30.48;
 }
 
 
